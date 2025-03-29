@@ -29,7 +29,7 @@ export default function SignUp() {
         switch (field) {
             case 'email':
                 if (value === '') {
-                    return 'Email is required';
+                    return 'Email required';
                 }
                 else {
                     return validateEmail(value) ? '' : 'Invalid email address';
@@ -39,7 +39,7 @@ export default function SignUp() {
                     return 'Password must be at least 8 characters long';
                 }
                 else {
-                    return validatePassword(value) ? '' : 'Bold of you to sign in without a password';
+                    return validatePassword(value) ? '' : 'Password required';
                 }
             case 'username':
                 if (value === '') {
@@ -57,13 +57,34 @@ export default function SignUp() {
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const emailError = validateField('email', email);
         const passwordError = validateField('password', password);
         const usernameError = validateField('username', username);
 
-        setErrors({ email: emailError, password: passwordError, username: usernameError });
+        // setErrors({ email: emailError, password: passwordError, username: usernameError });
+        setErrors((prevErrors) => {
+                const newErrors = {
+                    email: emailError,
+                    password: passwordError,
+                    username: usernameError,
+                };
+                return newErrors;
+            });
+        if(!emailError && !passwordError && !usernameError) {
+            await fetch("http://localhost:3000/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    username: username,
+                }),
+            });
+        };
     };
 
     return (
