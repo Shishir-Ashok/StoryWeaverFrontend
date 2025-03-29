@@ -1,0 +1,52 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100vh;
+  background-color: var(--isabelline);
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--dark-green);
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--dark-green);
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  color: var(--isabelline);
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+
+.signin-button {
+  background-color: var(--dark-green);
+  border: none;
+}
+
+.signup-button {
+  background-color: var(--tomato);
+  border: none;
+}
+
+.signin-button:hover,
+.signup-button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}

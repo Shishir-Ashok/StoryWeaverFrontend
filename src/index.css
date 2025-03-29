@@ -1,0 +1,23 @@
+/* CSS HEX */
+
+:root {
+  --isabelline: #f7f2f0ff;
+  --platinum: #e5e5e5ff;
+  --dark-green: #001f1eff;
+  --umber: #5e4f45ff;
+  --tomato: #ff5744ff;
+
+
+  font-family: "SF Pro Display", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--dark-green);
+  background-color: var(--isabelline);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
