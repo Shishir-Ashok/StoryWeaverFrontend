@@ -26,7 +26,7 @@ export default function SignIn() {
         switch (field) {
             case 'email':
                 if (value === '') {
-                    return 'Email is required';
+                    return 'Email required';
                 }
                 else {
                     return validateEmail(value) ? '' : 'Invalid email address';
@@ -63,8 +63,7 @@ export default function SignIn() {
                 setErrors((prevErrors) => ({
                     ...prevErrors,
                     credentials: 'Invalid email or password',
-                }));
-                
+                }));   
             }
         };
     };
