@@ -1,0 +1,33 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    align-items: center;
+    color: var(--dark-green);
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--tomato);
+    cursor: pointer;
+}
+
+.header-elements {
+    display: flex;
+    gap: 3rem;
+}
+
+.create-post, 
+.logout {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--dark-green);
+    align-content: center;
+}
+
+.create-post:hover,
+.logout:hover {
+    border-bottom: 0.2rem solid var(--tomato);
+    transition: 100ms;
+}
