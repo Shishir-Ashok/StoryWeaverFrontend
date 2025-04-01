@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../../utils/AuthContext';
 import { Link, Navigate } from "react-router-dom";
 import './SignIn.css';
 
@@ -6,10 +7,9 @@ export default function SignIn() {
     // State for form inputs and errors
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
     const [errors, setErrors] = useState({ email: '', password: '', credentials: '' });
 
-
+    const { error, isAuthenticated, loading, signin } = useContext(AuthContext);
 
     // Validation functions
     const validateEmail = (email) => {
@@ -47,28 +47,18 @@ export default function SignIn() {
         setErrors({ email: emailError, password: passwordError });
 
         if (!emailError && !passwordError) {
-            const response = await fetch("http://localhost:3000/signin", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({email: email, password: password}),
-                credentials: "include",
-            });
+            const response = signin(email, password);
             
-            if (response.ok) {
+            if (error === null) {
                 setErrors({ email: '', password: '', credentials: '' });
-                setRedirect(true);
             }
             else {
-                const errorData = await response.json();
-                setErrors((prevErrors) => ({
-                    ...prevErrors,
-                    credentials: 'Invalid email or password',
-                }));   
+                setErrors({credentials : error});
             }
         };
     };
 
-    if (redirect) {
+    if (loading && isAuthenticated) {
         return <Navigate to={"/home"} />;
     }
 
@@ -79,7 +69,7 @@ export default function SignIn() {
                 <div className="line"></div>
                 <div className="input-group">
                     <input
-                        type="email"
+                        type="text" //changing it from email to text cause browser validates email before letting the form to be submitted
                         id="email"
                         placeholder="Email ID"
                         value={email}
