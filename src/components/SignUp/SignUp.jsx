@@ -109,7 +109,7 @@ export default function SignUp() {
         };
     };
 
-    if(redirect) {
+    if (redirect) {
         return (
             <Navigate to={"/signin"} />
         );
@@ -132,7 +132,7 @@ export default function SignUp() {
                     </div>
                     <div className="input-group">
                         <input
-                            type="email"
+                            type="text" //changing it from email to text cause browser validates email before letting the form to be submitted
                             id="email"
                             placeholder="Email ID"
                             value={email}
