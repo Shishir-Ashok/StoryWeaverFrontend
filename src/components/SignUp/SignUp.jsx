@@ -75,6 +75,7 @@ export default function SignUp() {
             return newErrors;
         });
         if (!emailError && !passwordError && !usernameError) {
+            console.log("Sign UP response: ");
             const response = await fetch("http://localhost:3000/signup", {
                 method: "POST",
                 headers: {

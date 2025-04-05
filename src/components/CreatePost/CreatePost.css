@@ -1,0 +1,74 @@
+.post-headers {
+    margin: 2rem 1rem;
+    margin-top: 5rem;
+}
+
+.post-headers .title {
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.post-headers .description {
+    font-size: 1rem;
+}
+
+.tag-selector-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.selected-tags-list {
+    margin-top: 1rem; 
+}
+
+.selected-tag {
+    background-color: var(--umber);
+    color: var(--platinum);
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-right: 0.6rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-toggle {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--platinum);
+    color: var(--dark-green);
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: "SF Pro Display";
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown-menu {
+    position: absolute;
+    width: 100%;
+    background: var(--isabelline);
+    border: 1px solid var(--platinum);
+    border-radius: 0.4rem;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.dropdown-item {
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item.selected {
+    background: var(--platinum);
+}

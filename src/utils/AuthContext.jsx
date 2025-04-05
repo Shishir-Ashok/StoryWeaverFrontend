@@ -5,10 +5,12 @@ export function AuthProvider({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [editorJson, setEditorJson] = useState();
 
 
     const signin = async (email, password) => {
         try {
+            console.log ("AuthContext json username, password: ", JSON.stringify({ email: email, password: password }));
             const response = await fetch("http://localhost:3000/signin", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -55,11 +57,17 @@ export function AuthProvider({ children }) {
                 setError(err);
                 setLoading(false);
             });
-        //   console.log("Auth Context - isAuthenticated within useEffect => ", isAuthenticated);
+          console.log("Auth Context - isAuthenticated within useEffect => ", isAuthenticated);
     }, []);
 
+
+    // Context Editor
+    const fetchEditor = (editor) => {
+        setEditorJson(editor);
+    };
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, signin, logout, loading, error }}>
+        <AuthContext.Provider value={{ isAuthenticated, signin, logout, loading, error, fetchEditor, editorJson }}>
             {children}
         </AuthContext.Provider>
     );

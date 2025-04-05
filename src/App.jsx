@@ -7,6 +7,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
 import AuthContext, { AuthProvider } from './utils/AuthContext'
 import './App.css'
+import CreatePost from './components/CreatePost/CreatePost';
 
 export default function App() {
 
@@ -31,6 +32,9 @@ export default function App() {
           isAuthenticated ? <Navigate to={'/home'} /> : <SignUp />} />
         <Route path="/home" element={<ProtectedRoute auth={isAuthenticated} />}>
           <Route path="/home" element={<HomePage />} />
+        </Route>
+        <Route path="/create" element={<ProtectedRoute auth={isAuthenticated} />}>
+          <Route path="/create" element={<CreatePost />} />
         </Route>
       </Routes>
     </>

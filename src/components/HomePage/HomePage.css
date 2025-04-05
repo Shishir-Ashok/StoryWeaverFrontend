@@ -1,97 +1,188 @@
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem;
-    align-items: center;
-    color: var(--dark-green);
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  align-items: center;
+  color: var(--dark-green);
 }
 
 .logo {
-    font-weight: 900;
-    font-size: 3rem;
-    color: var(--tomato);
-    cursor: pointer;
-    margin-left: 4rem;
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--tomato);
+  cursor: pointer;
+  margin-left: 4rem;
 }
 
 .header-elements {
-    display: flex;
-    gap: 3rem;
-    margin-right: 4rem;
+  display: flex;
+  gap: 3rem;
+  margin-right: 4rem;
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    position: relative;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
-
 .search {
-    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-    border-radius: 0.3rem;
-    transition: width 0.3s ease;
-    width: 200px;
+  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+  border-radius: 0.3rem;
+  transition: width 0.3s ease;
+  width: 200px;
 }
 
 .search-icon {
-    position: absolute;
-    left: 0.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    pointer-events: all;
-    color: var(--dark-green);
-    opacity: 40%;
+  position: absolute;
+  left: 0.4rem;
+  top: 58%;
+  transform: translateY(-50%);
+  pointer-events: all;
+  color: var(--dark-green);
+  opacity: 40%;
 }
 
 .create-post,
 .logout {
-    text-decoration: none;
-    cursor: pointer;
-    color: var(--dark-green);
-    align-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--dark-green);
+  align-content: center;
 }
 
-.create-post:hover,
+.create-post {
+  background-color: var(--dark-green);
+  color: var(--isabelline);
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+}
+
 .logout:hover {
-    border-bottom: 0.2rem solid var(--tomato);
-    transition: 100ms;
+  border-bottom: 0.2rem solid var(--tomato);
+  transition: 100ms;
+}
+
+.blog-container {
+  display: flex;
+  justify-content: space-around;
+  min-width: 100vh;
+}
+
+.blog-box {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-bottom: 0;
+  margin: 0 6rem;
+  border-bottom: 0.1rem solid var(--platinum);
+  max-width: 40rem;
+}
+
+.blog-container .username {
+  font-size: 0.85rem;
+  color: var(--umber);
+  margin-bottom: 0;
+}
+
+.blog-container .title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  color: var(--dark-green);
+}
+
+.blog-container .blog-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--dark-green);
+  opacity: 0.7;
+  /* margin-bottom: 1.5rem; */
+}
+
+.blog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #001f1e50;
+}
+
+.blog-footer .edit {
+  cursor: pointer;
+  padding-left: 1rem;
+  transition: color 0.2s;
+}
+
+.blog-footer .edit:hover {
+  color: var(--tomato);
+}
+
+.history {
+  opacity: 1 !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.history:hover {
+  color: var(--tomato);
+  transition: color 0.2s;
+}
+
+.flex-group-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-group-1 .date {
+  padding-right: 2rem;
+}
+
+.flex-group-1 .views {
+  display: flex;
+  align-items: center;
+}
+
+.flex-group-2 {
+  display: flex;
+
+  justify-content: space-between;
 }
 
 @media (max-width: 700px) {
-    .logo {
-        margin-left: 0;
-        font-size: 2.5rem;
-    }
+  .logo {
+    margin-left: 0;
+    font-size: 2.5rem;
+  }
 
-    .header-elements {
-        margin-right: 0;
-        gap: 1.5rem;
-    }
+  .header-elements {
+    margin-right: 0;
+    gap: 1.5rem;
+  }
 
-    .search {
-        border: 2px solid black;
-    }
+  .search {
+    border: 2px solid black;
+  }
 
-    .search-container .search {
-        display: none;
-    }
+  .search-container .search {
+    display: none;
+  }
 
-    .search-container.active .search {
-        display: block;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        margin-top: 0.5rem;
-        padding: 0.5rem;
-    }
+  .search-container.active .search {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
 
-    .search-icon {
-        font-size: 1.5rem;
-        color: var(--dark-green);
-        opacity: 100%;
-        left: -1.5rem;
-    }
-
+  .search-icon {
+    font-size: 1.5rem;
+    color: var(--dark-green);
+    opacity: 100%;
+    left: -1.5rem;
+    cursor: pointer;
+  }
 }
