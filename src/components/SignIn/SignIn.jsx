@@ -47,7 +47,8 @@ export default function SignIn() {
         setErrors({ email: emailError, password: passwordError });
 
         if (!emailError && !passwordError) {
-            const response = signin(email, password);
+            const response = await signin(email, password);
+            console.log("Signin Response: ", response);
             
             if (error === null) {
                 setErrors({ email: '', password: '', credentials: '' });
