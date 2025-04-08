@@ -20,29 +20,6 @@
   margin-right: 4rem;
 }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.search {
-  padding: 0.5rem 0.5rem 0.5rem 2.5rem;
-  border-radius: 0.3rem;
-  transition: width 0.3s ease;
-  width: 200px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 0.4rem;
-  top: 58%;
-  transform: translateY(-50%);
-  pointer-events: all;
-  color: var(--dark-green);
-  opacity: 40%;
-}
-
 .create-post,
 .logout {
   text-decoration: none;
@@ -76,7 +53,7 @@
   padding-bottom: 0;
   margin: 0 6rem;
   border-bottom: 0.1rem solid var(--platinum);
-  max-width: 40rem;
+  width: 40rem;
 }
 
 .blog-container .username {
@@ -150,6 +127,80 @@
   justify-content: space-between;
 }
 
+.tag-selector {
+  display: flex;
+  align-items: center;
+  margin: 1rem 20rem;
+  margin-top: 5rem;
+  gap: 1rem;
+}
+
+.dropdown-homepage {
+  position: relative;
+  width: 8rem;
+}
+
+.dropdown-button-homepage {
+  width: 8rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  cursor: pointer;
+  background: var(--dark-green);
+  border: 1px solid var(--platinum);
+  border-radius: 0.4rem;
+}
+
+.dropdown-menu-homepage {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  width: 8rem;
+  max-height: 10rem;
+  overflow-y: auto;
+  z-index: 100;
+  border: 1px solid var(--platinum);
+  background: var(--isabelline);
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.dropdown-item-homepage {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdown-item-homepage:hover {
+  background: var(--platinum);
+}
+
+.dropdown-item-homepage.selected {
+  background: var(--umber);
+  color: var(--isabelline);
+}
+
+.selected-tags-homepage {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 0.5rem;
+}
+
+.selected-tag-homepage {
+  padding: 0.5rem 0.75rem;
+  background: var(--umber);
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  flex-shrink: 0; /* Prevent tags from shrinking when there are many */
+  color: var(--isabelline);
+}
+
+.no-blog {
+  text-align: center;
+}
+
 @media (max-width: 700px) {
   .logo {
     margin-left: 0;
@@ -161,28 +212,8 @@
     gap: 1.5rem;
   }
 
-  .search {
-    border: 2px solid black;
-  }
-
-  .search-container .search {
-    display: none;
-  }
-
-  .search-container.active .search {
-    display: block;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-  }
-
-  .search-icon {
-    font-size: 1.5rem;
-    color: var(--dark-green);
-    opacity: 100%;
-    left: -1.5rem;
-    cursor: pointer;
+  .tag-selector {
+    margin: 1rem 2rem;
+    margin-top: 5rem;
   }
 }
