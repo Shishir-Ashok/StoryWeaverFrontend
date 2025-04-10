@@ -1,0 +1,60 @@
+.timeline-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    font-family: sans-serif;
+  }
+  
+  .timeline-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 50%;
+    border-left: 2px solid #ccc;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .left-content {
+    position: absolute;
+    left: 0;
+    width: 45%;
+    text-align: right;
+    padding-right: 1rem;
+  }
+  
+  .right-content {
+    padding-left: 1rem;
+  }
+  
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    background-color: #555;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    left: -9px;
+    top: 4px;
+  }
+  
+  .timestamp,
+  .user,
+  .action {
+    margin: 0.3rem 0;
+  }
+  
+  .action {
+    font-size: 0.85rem;
+    color: #777;
+  }
+  
