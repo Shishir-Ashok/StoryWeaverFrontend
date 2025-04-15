@@ -1,0 +1,100 @@
+/* Container for the whole page */
+.single-post-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Table of Contents (TOC) Sidebar */
+.toc {
+  width: 300px;
+  flex-shrink: 0;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
+
+.toc h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--dark-green);
+  padding-bottom: 0.5rem;
+  color: var(--dark-green);
+}
+
+/* Styles for individual TOC items */
+.toc-item {
+  margin-bottom: 0.5rem;
+}
+
+.toc-subitems {
+  margin-left: 15px;
+  font-size: 0.9em;
+  color: var(--umber);
+}
+
+.toc-subitem {
+  margin-bottom: 0.4rem;
+}
+
+.toc-heading a {
+  text-decoration: none;
+  color: var(--tomato);
+  transition: color 0.3s ease;
+}
+
+.toc-heading a:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.post-content {
+  flex: 1;
+  background: var(--isabelline);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.post-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  color: var(--dark-green);
+}
+
+.meta-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Author and Time Information */
+.post-author,
+.post-time {
+  font-size: 0.9rem;
+  color: var(--umber);
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .single-post-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .toc {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
+
+  .post-content {
+    padding: 1.5rem;
+  }
+}

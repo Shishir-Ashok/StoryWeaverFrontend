@@ -1,5 +1,6 @@
 import { Edit, Eye } from "lucide-react";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 
 export default function BlogPosts({ post }) {
   const formattedDate = new Date(post.createdAt).toLocaleDateString("en-US", {
@@ -12,7 +13,9 @@ export default function BlogPosts({ post }) {
       <div className="blog-container">
         <div className="blog-box">
           <p className="username">{post.createdBy.username}</p>
-          <p className="title">{post.title}</p>
+          <Link to={`/post/${post._id}`}>
+            <p className="title">{post.title}</p>
+          </Link>
           <p className="blog-description">{post.description}</p>
           <div className="blog-footer">
             <div className="flex-group-1">

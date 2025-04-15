@@ -1,36 +1,54 @@
-export default function extractSnapshots(doc) {
-  const snapshots = [];
-  
-  function traverse(node) {
-    if (node.type === 'text') {
-      // If the node has marks, check each one
-      if (node.marks && Array.isArray(node.marks)) {
-        node.marks.forEach(mark => {
-          if (mark.type === 'highlight') {
-            // Save the highlighted text
-            snapshots.push({
-              type: 'highlight',
-              text: node.text,
-            });
-          }
-          if (mark.type === 'link') {
-            // Save the link details
-            snapshots.push({
-              type: 'link',
-              text: node.text,
-              href: mark.attrs.href,
-            });
-          }
+export const extractSnapshots = (editorContent) => {
+  const toc = [];
+  let currentHeading = null;
+  console.log("Editor Content: ", editorContent);
+
+  editorContent.content.forEach((node, index) => {
+    // Check if the node is a heading
+    if (node.type === "heading") {
+      const headingText =
+        node.content
+          ?.map((child) => child.text)
+          .join("")
+          .trim() || "";
+
+      if (headingText !== "") {
+        const level = node.attrs?.level || 1;
+        const headingId = `heading-${index}-${headingText.replace(
+          /\s+/g,
+          "-"
+        )}`;
+
+        // Create a unique ID for the heading
+        // const headingId = `heading-${index}-${headingText.replace(/\s+/g, "-")}`;
+        currentHeading = {
+          id: headingId,
+          text: headingText,
+          level: node.attrs?.level || 1,
+          links: [],
+          highlights: [],
+        };
+        toc.push(currentHeading);
+      }
+    } else {
+      // For non-heading nodes (like paragraphs), check for links and highlights
+      if (currentHeading && node.content) {
+        node.content.forEach((child) => {
+          const textValue = child.text || "";
+          const marks = child.marks || [];
+          console.log("Text Value: ", textValue);
+          marks.forEach((mark) => {
+            if (mark.type === "link") {
+              currentHeading.links.push(textValue);
+            }
+            if (mark.type === "highlight") {
+              currentHeading.highlights.push(textValue);
+            }
+          });
         });
       }
     }
-    
-    // If there are child nodes, traverse them too.
-    if (node.content && Array.isArray(node.content)) {
-      node.content.forEach(child => traverse(child));
-    }
-  }
-  
-  traverse(doc);
-  return snapshots;
-}
+  });
+
+  return toc;
+};
