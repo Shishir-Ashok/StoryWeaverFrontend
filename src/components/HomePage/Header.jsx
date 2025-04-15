@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useMatch } from "react-router-dom";
 import AuthContext from "../../utils/AuthContext";
 import "./HomePage.css";
 
 export default function Header({ editor, blogData }) {
   const location = useLocation();
   const isCreatePage = location.pathname === "/create";
+  const isSinglePostPage = useMatch("/post/:id") !== null;
 
+  console.log("Header location: ", location.pathname);
   // Go to home page
   const [isHome, setIsHome] = useState(false);
 
@@ -60,6 +62,10 @@ export default function Header({ editor, blogData }) {
             <p className="create-post" onClick={handlePublish} id="publish">
               Publish
             </p>
+          ) : isSinglePostPage ? (
+            <Link className="create-post" to={"/edit"} id="edit">
+              Edit
+            </Link>
           ) : (
             <Link className="create-post" to={"/create"} id="create">
               Create
