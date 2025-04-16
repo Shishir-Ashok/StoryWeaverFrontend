@@ -42,6 +42,7 @@ export default function SinglePost() {
     return new Date(date).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
+      year: "numeric",
     });
   };
 
@@ -52,7 +53,7 @@ export default function SinglePost() {
     console.log("Content: ", blogData.editor);
     return (
       <>
-        <Header />
+        <Header blogData={blogData} />
         <div className="single-post-container">
           <aside className="toc">
             <h2>Table of Contents</h2>
@@ -67,18 +68,21 @@ export default function SinglePost() {
           <main className="post-content">
             <h1 className="post-title">{blogData.title}</h1>
             <div className="meta-data">
-              <p className="post-author">
-                {"Author"} : {blogData.createdBy.username}
-              </p>
-              <p className="post-time">
-                {"Creation"} : {formattedDate(blogData.createdAt)}
-              </p>
-              <p className="post-author">
-                {"Updated by"} : {blogData.editedBy.username}
-              </p>
-              <p className="post-time">
-                {"Update"} : {formattedDate(blogData.updatedAt)}
-              </p>
+              <div className="post-creator">
+                <p className="post-author">{blogData.createdBy.username}</p>
+                <p className="post-author">{blogData.editedBy.username}</p>
+              </div>
+              <div className="dots">
+                <span>{"· "}</span>
+                <span>{"· "}</span>
+              </div>
+              <div className="post-editor">
+                <p className="post-time">{formattedDate(blogData.createdAt)}</p>
+
+                <p className="post-time">
+                  {formattedDate(blogData.updatedAt)} {"(last edit)"}
+                </p>
+              </div>
             </div>
             {renderTiptapContent(blogData.editor)}
           </main>

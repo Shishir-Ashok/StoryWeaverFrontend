@@ -68,17 +68,32 @@
 
 .meta-data {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 1.5rem;
+  color: var(--umber);
+  opacity: 0.8;
+}
+
+.meta-data p {
+  margin: 0;
+}
+
+.dots {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.6rem;
 }
 
 /* Author and Time Information */
 .post-author,
 .post-time {
   font-size: 0.9rem;
-  color: var(--umber);
   margin-bottom: 0.5rem;
+}
+
+.post-author {
+  text-decoration: underline;
 }
 
 /* Responsive adjustments for smaller screens */
