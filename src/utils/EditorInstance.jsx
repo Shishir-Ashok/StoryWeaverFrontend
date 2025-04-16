@@ -3,6 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
+import { useEffect } from "react";
 
 export const extensions = [
   StarterKit,
@@ -83,7 +84,7 @@ export const extensions = [
   }),
 ];
 
-export default function EditorInstance() {
+export default function EditorInstance(initialContent = null) {
   //   const content = {
   //     type: "doc",
   //     content: [
@@ -224,15 +225,24 @@ export default function EditorInstance() {
   //     ],
   //   };
 
+  console.log("EditorInstance.jsx \nContent: ", initialContent);
+
   const editor = useEditor({
     extensions,
-    // content,
+    content: initialContent || null,
     editorProps: {
       attributes: {
         class: "editor-style",
       },
     },
   });
+
+  useEffect(() => {
+    if (editor && initialContent) {
+      // Use setContent to update the editor with the passed-in content
+      editor.commands.setContent(initialContent);
+    }
+  }, [editor, initialContent]);
 
   return editor;
 }

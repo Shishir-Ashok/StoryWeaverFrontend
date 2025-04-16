@@ -28,6 +28,12 @@
   align-content: center;
 }
 
+.handleEdit {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .create-post {
   background-color: var(--dark-green);
   color: var(--isabelline);

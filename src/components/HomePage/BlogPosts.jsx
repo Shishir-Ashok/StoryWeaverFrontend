@@ -1,12 +1,28 @@
 import { Edit, Eye } from "lucide-react";
 import "./HomePage.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function BlogPosts({ post }) {
   const formattedDate = new Date(post.createdAt).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
+    year: "numeric",
   });
+
+  const [redirect, setRedirect] = useState(false);
+
+  const handleEditClick = () => {
+    if (post.isEditing) {
+      console.log("Edit mode is already active for this post.");
+      return;
+    }
+    setRedirect(true);
+  };
+
+  if (redirect) {
+    return <Navigate to={`/edit/${post._id}`} />;
+  }
 
   return (
     <>
@@ -27,7 +43,19 @@ export default function BlogPosts({ post }) {
             </div>
             <div className="flex-group-2">
               <p className="history">History</p>
-              <p className="edit">
+              <p
+                className="edit"
+                onClick={handleEditClick}
+                style={
+                  post.isEditing
+                    ? {
+                        color: "#aaa",
+                        pointerEvents: "none",
+                        cursor: "not-allowed",
+                      }
+                    : { cursor: "pointer" }
+                }
+              >
                 <Edit />
               </p>
             </div>
