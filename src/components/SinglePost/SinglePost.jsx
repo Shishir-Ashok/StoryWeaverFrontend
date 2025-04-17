@@ -20,7 +20,10 @@ export default function SinglePost() {
       try {
         if (hasFetchedRef.current) return;
         hasFetchedRef.current = true; // Prevent multiple fetches and multiple increments to views counter
-        const response = await fetch(`http://localhost:3000/blog/${id}`);
+        const response = await fetch(`http://localhost:3000/blog/${id}`, {
+          method: "GET",
+          credentials: "include",
+        });
         if (!response.ok) {
           throw new Error("Failed to fetch blog data");
         }

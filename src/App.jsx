@@ -10,6 +10,7 @@ import "./App.css";
 import CreatePost from "./components/CreatePost/CreatePost";
 import SinglePost from "./components/SinglePost/SinglePost";
 import EditPostPage from "./components/EditPostPage/EditPostPage";
+import HistoryPage from "./components/HistoryPage/HistoryPage";
 
 export default function App() {
   const { isAuthenticated, loading } = useContext(AuthContext);
@@ -59,6 +60,12 @@ export default function App() {
           element={<ProtectedRoute auth={isAuthenticated} />}
         >
           <Route path="/edit/:id" element={<EditPostPage />} />
+        </Route>
+        <Route
+          path="/history/:id"
+          element={<ProtectedRoute auth={isAuthenticated} />}
+        >
+          <Route path="/history/:id" element={<HistoryPage />} />
         </Route>
       </Routes>
     </>
