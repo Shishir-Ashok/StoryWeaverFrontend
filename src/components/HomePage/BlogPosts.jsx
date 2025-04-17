@@ -11,6 +11,7 @@ export default function BlogPosts({ post }) {
   });
 
   const [redirect, setRedirect] = useState(false);
+  const [historyRedirect, setHistoryRedirect] = useState(false);
 
   const handleEditClick = () => {
     if (post.isEditing) {
@@ -20,8 +21,16 @@ export default function BlogPosts({ post }) {
     setRedirect(true);
   };
 
+  const handleHistoryClick = () => {
+    setHistoryRedirect(true);
+  };
+
   if (redirect) {
     return <Navigate to={`/edit/${post._id}`} />;
+  }
+
+  if (historyRedirect) {
+    return <Navigate to={`/history/${post._id}`} />;
   }
 
   return (
@@ -42,7 +51,9 @@ export default function BlogPosts({ post }) {
               </p>
             </div>
             <div className="flex-group-2">
-              <p className="history">History</p>
+              <p className="history" onClick={handleHistoryClick}>
+                History
+              </p>
               <p
                 className="edit"
                 onClick={handleEditClick}

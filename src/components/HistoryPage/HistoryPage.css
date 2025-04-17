@@ -1,0 +1,31 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.history-table {
+  border-collapse: collapse;
+  width: 60%;
+  max-width: 800px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.history-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.history-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
